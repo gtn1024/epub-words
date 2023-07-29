@@ -74,9 +74,17 @@ if __name__ == '__main__':
   for key, value in dct.items():
     lst.append(T(key, value))
   lst.sort(key=lambda x: x.count, reverse=True)
+
+  # export to 墨墨背单词
   with open('result.txt', 'w') as f:
     for t in lst:
       if t.count < 3:
         break
+      f.write(f"{t.word}\n")
+
+  with open('result.csv', 'w') as f:
+    for t in lst:
+      if t.count < 3:
+        break
       # export to txt
-      f.write(t.word + '\n')
+      f.write(f"{t.word},{t.count}\n")
